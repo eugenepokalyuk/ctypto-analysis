@@ -114,7 +114,7 @@ export function CoinTable({ coins, selectedId, onSelect }: Props) {
                   {rsi.toFixed(1)}
                 </td>
                 <td className={`${classes.td} ${classes.right} ${classes.macd} ${bull ? classes.bull : classes.bear}`}>
-                  {bull ? '▲ Bull' : '▼ Bear'}
+                  {bull ? '▲ Бычий' : '▼ Медвежий'}
                 </td>
                 <td className={`${classes.td} ${classes.right} ${classes.bb}`}>{bb}%</td>
                 <td className={classes.td}><SignalBadge signal={coin.signal} /></td>
