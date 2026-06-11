@@ -1,0 +1,86 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.page {
+  min-height: calc(100vh - #{$nav-height});
+  padding-bottom: calc(#{$nav-height} + 24px);
+}
+
+.hero {
+  padding: 32px 20px 24px;
+  text-align: center;
+  border-bottom: 1px solid $border;
+}
+
+.heroTitle {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 700;
+  color: $text-primary;
+
+  @include mobile {
+    font-size: 18px;
+  }
+}
+
+.heroSub {
+  margin: 0;
+  font-size: 13px;
+  color: $text-secondary;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px;
+  padding: 20px 16px;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+}
+
+.card {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: border-color 0.15s;
+
+  &:hover {
+    border-color: $accent;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.term {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.short {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 500;
+  color: $accent;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.description {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: $text-secondary;
+}

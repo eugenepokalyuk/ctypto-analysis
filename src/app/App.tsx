@@ -8,6 +8,7 @@ import { useGetMarketAnalysisQuery } from '@/shared/api/marketApi'
 import { AppRoute } from '@/shared/config/routes'
 import { MarketPage } from '@/pages/market/ui/MarketPage'
 import { PortfolioPage } from '@/pages/portfolio/ui/PortfolioPage'
+import { GlossaryPage } from '@/pages/glossary/ui/GlossaryPage'
 import { BottomNav } from '@/widgets/bottom-nav/ui/BottomNav'
 import { DataSourceSelector } from '@/features/data-source/ui/DataSourceSelector'
 import { selectPreferredSource } from '@/features/data-source/model/selectors'
@@ -30,10 +31,12 @@ export function App() {
     useGetMarketAnalysisQuery(preferred, { pollingInterval: 5 * 60 * 1000 })
 
   const prevPath  = React.useRef(location.pathname)
-  const direction = location.pathname === AppRoute.Portfolio && prevPath.current !== AppRoute.Portfolio ? 1 : -1
+  const ORDER = [AppRoute.Market, AppRoute.Portfolio, AppRoute.Glossary]
+  const direction = ORDER.indexOf(location.pathname as AppRoute) > ORDER.indexOf(prevPath.current as AppRoute) ? 1 : -1
   React.useEffect(() => { prevPath.current = location.pathname }, [location.pathname])
 
   const isPortfolio = location.pathname === AppRoute.Portfolio
+  const isGlossary  = location.pathname === AppRoute.Glossary
 
   const updatedAt = fulfilledTimeStamp
     ? new Date(fulfilledTimeStamp).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
@@ -74,6 +77,12 @@ export function App() {
             >
               Портфель
             </button>
+            <button
+              className={`${classes.desktopTab} ${isGlossary ? classes.active : ''}`}
+              onClick={() => navigate(AppRoute.Glossary)}
+            >
+              Словарь
+            </button>
           </div>
         </div>
       </header>
@@ -95,6 +104,7 @@ export function App() {
           <Routes location={location}>
             <Route path={AppRoute.Market}    element={<MarketPage    coins={data} loading={isLoading} />} />
             <Route path={AppRoute.Portfolio} element={<PortfolioPage marketData={data} />} />
+            <Route path={AppRoute.Glossary}  element={<GlossaryPage />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
