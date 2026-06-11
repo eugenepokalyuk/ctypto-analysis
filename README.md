@@ -2,11 +2,11 @@
 
 Веб-приложение для технического анализа криптовалютного рынка и управления инвестиционным портфелем. Работает полностью в браузере — без серверной части, без регистрации.
 
-[![Deploy](https://github.com/evgenijpokaluk/ctypto-analysis/actions/workflows/deploy.yml/badge.svg)](https://github.com/evgenijpokaluk/ctypto-analysis/actions/workflows/deploy.yml)
-[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-6366f1?logo=github)](https://evgenijpokaluk.github.io/ctypto-analysis/)
+[![Deploy](https://github.com/eugenepokalyuk/ctypto-analysis/actions/workflows/deploy.yml/badge.svg)](https://github.com/eugenepokalyuk/ctypto-analysis/actions/workflows/deploy.yml)
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-6366f1?logo=github)](https://eugenepokalyuk.github.io/ctypto-analysis/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-22c55e.svg)](LICENSE)
 
-**[→ Открыть приложение](https://evgenijpokaluk.github.io/ctypto-analysis/)**
+**[→ Открыть приложение](https://eugenepokalyuk.github.io/ctypto-analysis/)**
 
 ---
 
@@ -102,7 +102,7 @@ RTK Query кэширует на 5 минут
 ## Запуск локально
 
 ```bash
-git clone https://github.com/evgenijpokaluk/ctypto-analysis.git
+git clone https://github.com/eugenepokalyuk/ctypto-analysis.git
 cd ctypto-analysis
 npm install
 npm run dev
@@ -124,4 +124,4 @@ npm run dev
 
 ## Лицензия
 
-MIT © [Evgenii Pokalyuk](https://github.com/evgenijpokaluk)
+MIT © [Evgenii Pokalyuk](https://github.com/eugenepokalyuk)

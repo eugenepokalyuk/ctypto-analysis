@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://evgenijpokaluk.github.io/ctypto-analysis/sitemap.xml
+Sitemap: https://eugenepokalyuk.github.io/ctypto-analysis/sitemap.xml

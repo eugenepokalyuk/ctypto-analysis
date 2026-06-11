@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Real-time crypto market analysis with RSI, MACD and Bollinger Bands signals for 12 coins. No backend, no registration.",
   "keywords": ["crypto", "trading", "technical-analysis", "rsi", "macd", "bollinger-bands", "portfolio", "react", "typescript"],
-  "homepage": "https://evgenijpokaluk.github.io/ctypto-analysis/",
+  "homepage": "https://eugenepokalyuk.github.io/ctypto-analysis/",
   "private": true,
   "type": "module",
   "scripts": {
