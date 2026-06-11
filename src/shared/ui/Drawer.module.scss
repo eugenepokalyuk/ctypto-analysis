@@ -1,0 +1,47 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-overlay;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-drawer;
+  background: $card;
+  border-radius: $radius-2xl $radius-2xl 0 0;
+  max-height: 92dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.handle {
+  @include flex-center;
+  padding: 10px 0 4px;
+  flex-shrink: 0;
+  cursor: grab;
+
+  &:active { cursor: grabbing; }
+}
+
+.handleBar {
+  width: 40px;
+  height: 4px;
+  border-radius: 100px;
+  background: $border-light;
+}
+
+.content {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  flex: 1;
+  padding-bottom: 24px;
+}

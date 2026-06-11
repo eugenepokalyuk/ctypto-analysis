@@ -1,0 +1,109 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  color: $text-secondary;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.15s, color 0.15s;
+
+  &:hover { border-color: $accent; color: $text-primary; }
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $buy;
+  flex-shrink: 0;
+
+  &.fallback { background: $hold; }
+}
+
+.chevron {
+  width: 10px;
+  height: 10px;
+  transition: transform 0.2s;
+
+  .open & { transform: rotate(180deg); }
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 220px;
+  background: $card;
+  border: 1px solid $border;
+  border-radius: $radius-lg;
+  overflow: hidden;
+  z-index: 100;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+
+  &:hover           { background: rgba(255,255,255,0.04); }
+  &.active          { background: $accent-muted; }
+  &:not(:last-child) { border-bottom: 1px solid $border; }
+}
+
+.optionDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 4px;
+  flex-shrink: 0;
+
+  &.s_static        { background: $accent; }
+  &.s_coingecko     { background: #8dc647; }
+  &.s_binance       { background: #f0b90b; }
+  &.s_cryptocompare { background: #00a6e9; }
+  &.s_coincap       { background: #ff5f5f; }
+}
+
+.optionText { flex: 1; min-width: 0; }
+
+.optionName {
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.optionDesc {
+  font-size: 10px;
+  color: $text-muted;
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.activeCheck {
+  color: $accent;
+  font-size: 14px;
+  align-self: center;
+  flex-shrink: 0;
+}

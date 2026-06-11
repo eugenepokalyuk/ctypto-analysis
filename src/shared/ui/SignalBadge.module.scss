@@ -1,0 +1,29 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.badge {
+  @include flex-center;
+  position: relative;
+  display: inline-flex;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 3px 8px;
+  border-radius: 100px;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+
+.strongBuy  { background: $buy-muted;  color: $buy;  border-color: rgba($buy, 0.3); }
+.buy        { background: $buy-muted;  color: $buy;  border-color: rgba($buy, 0.15); }
+.hold       { background: $hold-muted; color: $hold; border-color: rgba($hold, 0.2); }
+.sell       { background: $sell-muted; color: $sell; border-color: rgba($sell, 0.15); }
+.strongSell { background: $sell-muted; color: $sell; border-color: rgba($sell, 0.3); }
+
+.pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 100px;
+  border: 1px solid currentColor;
+  pointer-events: none;
+}

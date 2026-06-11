@@ -1,0 +1,59 @@
+name: Fetch Market Data
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # каждые 5 минут
+  workflow_dispatch:          # ручной запуск для тестирования
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch CoinGecko data
+        id: fetch
+        run: |
+          COINS="bitcoin,ethereum,binancecoin,solana,ripple,cardano,avalanche-2,polkadot,chainlink,uniswap,dash,zcash"
+
+          # Цены
+          PRICES=$(curl -sf \
+            "https://api.coingecko.com/api/v3/simple/price?ids=${COINS}&vs_currencies=usd&include_24hr_change=true" \
+            || echo "null")
+
+          if [ "$PRICES" = "null" ]; then
+            echo "CoinGecko unavailable, skipping"
+            exit 0
+          fi
+
+          # Свечи для каждой монеты (30 дней)
+          CANDLES_JSON="{"
+          FIRST=true
+          for COIN in $(echo $COINS | tr ',' ' '); do
+            OHLC=$(curl -sf \
+              "https://api.coingecko.com/api/v3/coins/${COIN}/ohlc?vs_currency=usd&days=30" \
+              || echo "[]")
+            if [ "$FIRST" = true ]; then FIRST=false; else CANDLES_JSON+=","; fi
+            CANDLES_JSON+="\"${COIN}\":${OHLC}"
+            sleep 1.5   # 1.5s пауза между запросами — уважаем rate limit
+          done
+          CANDLES_JSON+="}"
+
+          # Собираем итоговый JSON
+          UPDATED_AT=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "{\"updatedAt\":\"${UPDATED_AT}\",\"prices\":${PRICES},\"candles\":${CANDLES_JSON}}" \
+            > public/data.json
+
+          echo "Data fetched successfully at ${UPDATED_AT}"
+
+      - name: Commit data.json
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data.json
+          # Коммит только если файл изменился
+          git diff --staged --quiet || git commit -m "chore: update market data [skip ci]"
+          git push

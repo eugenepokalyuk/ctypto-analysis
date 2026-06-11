@@ -1,0 +1,111 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.root {
+  min-height: 100dvh;
+  background: $surface;
+  color: $text-primary;
+}
+
+.header {
+  height: $header-height;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid $border;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: rgba($surface, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  @include desktop {
+    padding: 0 24px;
+  }
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logoMark {
+  font-size: 20px;
+  color: $accent;
+  line-height: 1;
+}
+
+.logoName {
+  font-size: 16px;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.timestamp {
+  font-size: 11px;
+  color: $text-muted;
+}
+
+.refreshBtn {
+  font-size: 12px;
+  color: $text-secondary;
+  background: none;
+  border: 1px solid $border;
+  border-radius: $radius-sm;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+
+  &:hover {
+    color: $text-primary;
+    border-color: $border-light;
+  }
+}
+
+// Desktop tab switcher (hidden on mobile — bottom nav takes over)
+.desktopTabs {
+  display: none;
+
+  @include desktop {
+    display: flex;
+    background: $card;
+    border: 1px solid $border;
+    border-radius: $radius-md;
+    overflow: hidden;
+  }
+}
+
+.desktopTab {
+  padding: 6px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text-muted;
+  transition: color 0.15s;
+
+  &.active {
+    background: $accent;
+    color: #fff;
+  }
+}
+
+.error {
+  margin: 16px;
+  padding: 14px 16px;
+  background: rgba($sell, 0.08);
+  border: 1px solid rgba($sell, 0.2);
+  border-radius: $radius-lg;
+  color: $sell;
+  font-size: 13px;
+}

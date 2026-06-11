@@ -1,0 +1,106 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.card {
+  position: relative;
+  border: 1px solid $border;
+  border-radius: $radius-xl;
+  background: $card;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+
+  &.selected  { background: rgba($accent, 0.08); border-color: rgba($accent, 0.4); }
+  &.glowBuy   { box-shadow: $shadow-buy; }
+  &.glowSell  { box-shadow: $shadow-sell; }
+  &.favActive { border-color: rgba(245, 158, 11, 0.35); }
+}
+
+// Кликабельная область заполняет весь блок
+.clickArea {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 14px 14px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.header {
+  @include flex-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  gap: 6px;
+}
+
+.titleGroup { min-width: 0; }
+
+.symbol {
+  font-size: 13px;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.2;
+}
+
+.name {
+  font-size: 10px;
+  color: $text-muted;
+  margin-top: 1px;
+  @include text-truncate;
+}
+
+.price {
+  font-size: 14px;
+  font-weight: 600;
+  color: $text-primary;
+  font-family: $font-mono;
+}
+
+.meta {
+  @include flex-between;
+  margin-top: 5px;
+}
+
+.change {
+  font-size: 11px;
+  font-weight: 600;
+  &.up   { color: $buy; }
+  &.down { color: $sell; }
+}
+
+.macd {
+  font-size: 10px;
+  font-weight: 700;
+  &.bull { color: $buy; }
+  &.bear { color: $sell; }
+}
+
+.rsiBar {
+  margin-top: 9px;
+  height: 2px;
+  border-radius: 100px;
+  background: $border;
+  overflow: hidden;
+}
+
+.rsiFill {
+  height: 100%;
+  border-radius: 100px;
+  &.low  { background: $buy; }
+  &.mid  { background: $hold; }
+  &.high { background: $sell; }
+}
+
+.rsiLabel {
+  font-size: 9px;
+  color: $text-muted;
+  margin-top: 3px;
+}
+
+// Кнопка звезды — позиционирована поверх карточки
+.favBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 1;
+}

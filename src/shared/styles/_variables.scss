@@ -1,0 +1,42 @@
+// Colors
+$surface:         #0c0e14;
+$card:            #161922;
+$card-hover:      #1d2130;
+$border:          #252836;
+$border-light:    #2e3347;
+$accent:          #6366f1;
+$accent-muted:    rgba(99, 102, 241, 0.15);
+$buy:             #22c55e;
+$buy-muted:       rgba(34, 197, 94, 0.12);
+$sell:            #ef4444;
+$sell-muted:      rgba(239, 68, 68, 0.12);
+$hold:            #f59e0b;
+$hold-muted:      rgba(245, 158, 11, 0.12);
+$text-primary:    #f1f3f9;
+$text-secondary:  #8b92a8;
+$text-muted:      #4a5068;
+
+// Typography
+$font-sans:       -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+$font-mono:       'SF Mono', 'Fira Code', monospace;
+
+// Spacing
+$radius-sm:       8px;
+$radius-md:       12px;
+$radius-lg:       16px;
+$radius-xl:       20px;
+$radius-2xl:      24px;
+
+// Shadows
+$shadow-card:     0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
+$shadow-buy:      0 0 20px rgba(34, 197, 94, 0.18);
+$shadow-sell:     0 0 20px rgba(239, 68, 68, 0.18);
+
+// Z-index
+$z-drawer:        50;
+$z-nav:           40;
+$z-overlay:       49;
+
+// Layout
+$nav-height:      64px;
+$header-height:   56px;

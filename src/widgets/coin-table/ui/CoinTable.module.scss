@@ -1,0 +1,82 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+.wrap { overflow-x: auto; padding: 0 12px; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.th {
+  padding: 8px 10px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  color: $text-muted;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid $border;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+
+  &:hover  { color: $text-primary; }
+  &.sorted { color: $accent; }
+  &.right  { text-align: right; }
+}
+
+.sortArrow {
+  margin-left: 3px;
+  opacity: 0.6;
+}
+
+.tr {
+  cursor: pointer;
+  transition: background 0.12s;
+  border-bottom: 1px solid rgba($border, 0.5);
+
+  &:hover  { background: $card; }
+  &.active { background: rgba($accent, 0.07); }
+}
+
+.td {
+  padding: 10px 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  &.right { text-align: right; }
+}
+
+.num  { color: $text-muted; font-size: 11px; }
+.sym  { font-weight: 700; color: $text-primary; }
+.name { color: $text-muted; font-size: 11px; }
+
+.price {
+  font-weight: 600;
+  color: $text-primary;
+  font-family: $font-mono;
+}
+
+.change {
+  font-weight: 600;
+  &.up   { color: $buy; }
+  &.down { color: $sell; }
+}
+
+.rsi {
+  font-family: $font-mono;
+  &.low  { color: $buy; }
+  &.high { color: $sell; }
+  &.mid  { color: $text-secondary; }
+}
+
+.macd {
+  font-weight: 700;
+  &.bull { color: $buy; }
+  &.bear { color: $sell; }
+}
+
+.bb { font-family: $font-mono; color: $text-secondary; }

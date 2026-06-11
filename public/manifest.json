@@ -1,0 +1,28 @@
+{
+  "name": "Crypto Advisor",
+  "short_name": "Crypto",
+  "description": "Технический анализ криптовалютного рынка в реальном времени — RSI, MACD, Bollinger Bands для 12 монет",
+  "start_url": "/ctypto-analysis/",
+  "scope": "/ctypto-analysis/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0c0e14",
+  "theme_color": "#0c0e14",
+  "lang": "ru",
+  "dir": "ltr",
+  "categories": ["finance", "utilities"],
+  "icons": [
+    {
+      "src": "/ctypto-analysis/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/ctypto-analysis/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "maskable"
+    }
+  ]
+}

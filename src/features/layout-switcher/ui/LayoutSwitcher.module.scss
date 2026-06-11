@@ -1,0 +1,38 @@
+@use '@/shared/styles/variables' as *;
+
+.wrap {
+  display: flex;
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: $text-muted;
+  transition: color 0.15s, background 0.15s;
+
+  &.active {
+    background: $accent;
+    color: #fff;
+  }
+
+  &:not(.active):hover {
+    background: $card;
+    color: $text-secondary;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}

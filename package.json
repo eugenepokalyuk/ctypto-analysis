@@ -1,0 +1,32 @@
+{
+  "name": "crypto-advisor",
+  "version": "1.0.0",
+  "description": "Real-time crypto market analysis with RSI, MACD and Bollinger Bands signals for 12 coins. No backend, no registration.",
+  "keywords": ["crypto", "trading", "technical-analysis", "rsi", "macd", "bollinger-bands", "portfolio", "react", "typescript"],
+  "homepage": "https://evgenijpokaluk.github.io/ctypto-analysis/",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.12.0",
+    "framer-motion": "^12.40.0",
+    "lightweight-charts": "^4.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-redux": "^9.3.0",
+    "technicalindicators": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "sass": "^1.100.0",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.5"
+  }
+}

@@ -1,0 +1,106 @@
+@use '@/shared/styles/variables' as *;
+@use '@/shared/styles/mixins' as *;
+
+// ─── Mobile: одна колонка, грид или детали ─────────────────────────────────
+
+.page {
+  padding-bottom: calc(#{$nav-height} + 8px);
+  overflow-x: hidden;
+}
+
+.sidebar {
+  display: block;
+}
+
+.main {
+  display: none; // скрыта на мобильном пока не выбрана монета
+}
+
+// Когда монета выбрана на мобильном — прячем грид, показываем детали
+.page.detailOpen {
+  .sidebar { display: none; }
+  .main    { display: block; }
+}
+
+// Инлайн-детали под таблицей на мобильном
+.inlineDetail {
+  margin-top: 8px;
+  @include desktop { display: none; }
+}
+
+// ─── Desktop: две колонки всегда видны ────────────────────────────────────
+
+@include desktop {
+  .page {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 0;
+    height: calc(100dvh - #{$header-height});
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  .sidebar {
+    display: block !important;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-gutter: stable;
+    border-right: 1px solid $border;
+    padding: 16px 12px;
+
+    &::-webkit-scrollbar       { width: 3px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: $border; border-radius: 2px; }
+  }
+
+  .main {
+    display: block !important;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar       { width: 3px; }
+    &::-webkit-scrollbar-track { background: transparent; }
+    &::-webkit-scrollbar-thumb { background: $border; border-radius: 2px; }
+  }
+}
+
+// ─── Детальная панель ──────────────────────────────────────────────────────
+
+.detailWrap {
+  padding-top: 4px;
+}
+
+// Кнопка "назад" — только на мобильном
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: $accent;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px 16px 4px;
+  transition: opacity 0.15s;
+
+  &:hover { opacity: 0.75; }
+
+  @include desktop { display: none; }
+}
+
+// Пустое состояние — только desktop
+.empty {
+  @include flex-center;
+  flex-direction: column;
+  gap: 10px;
+  height: 100%;
+  color: $text-muted;
+  font-size: 14px;
+
+  @include mobile { display: none; }
+}
+
+.emptyIcon {
+  font-size: 36px;
+  opacity: 0.25;
+}

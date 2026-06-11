@@ -1,0 +1,35 @@
+@use '@/shared/styles/variables' as *;
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.15s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+  }
+}
+
+.icon {
+  width: 14px;
+  height: 14px;
+  transition: color 0.2s;
+
+  .btn.active & {
+    color: #f59e0b;
+    filter: drop-shadow(0 0 4px rgba(245, 158, 11, 0.6));
+  }
+
+  .btn:not(.active) & {
+    color: $text-muted;
+  }
+}
