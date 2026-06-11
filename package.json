@@ -2,7 +2,17 @@
   "name": "crypto-advisor",
   "version": "1.0.0",
   "description": "Real-time crypto market analysis with RSI, MACD and Bollinger Bands signals for 12 coins. No backend, no registration.",
-  "keywords": ["crypto", "trading", "technical-analysis", "rsi", "macd", "bollinger-bands", "portfolio", "react", "typescript"],
+  "keywords": [
+    "crypto",
+    "trading",
+    "technical-analysis",
+    "rsi",
+    "macd",
+    "bollinger-bands",
+    "portfolio",
+    "react",
+    "typescript"
+  ],
   "homepage": "https://eugenepokalyuk.github.io/ctypto-analysis/",
   "private": true,
   "type": "module",
@@ -18,6 +28,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.3.0",
+    "react-router-dom": "^7.17.0",
     "technicalindicators": "^3.1.0"
   },
   "devDependencies": {

@@ -1,9 +1,11 @@
 import React from 'react'
 
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
 import { useGetMarketAnalysisQuery } from '@/shared/api/marketApi'
+import { AppRoute } from '@/shared/config/routes'
 import { MarketPage } from '@/pages/market/ui/MarketPage'
 import { PortfolioPage } from '@/pages/portfolio/ui/PortfolioPage'
 import { BottomNav } from '@/widgets/bottom-nav/ui/BottomNav'
@@ -13,8 +15,6 @@ import { LayoutSwitcher } from '@/features/layout-switcher/ui/LayoutSwitcher'
 
 import classes from './App.module.scss'
 
-type Tab = 'market' | 'portfolio'
-
 const PAGE_VARIANTS = {
   initial: (dir: number) => ({ x: dir > 0 ? '60%' : '-60%', opacity: 0 }),
   animate: { x: 0, opacity: 1 },
@@ -22,21 +22,18 @@ const PAGE_VARIANTS = {
 }
 
 export function App() {
-  const dispatch   = useDispatch()
-  const preferred  = useSelector(selectPreferredSource)
+  const location  = useLocation()
+  const navigate  = useNavigate()
+  const preferred = useSelector(selectPreferredSource)
 
   const { data = [], isLoading, isError, error, fulfilledTimeStamp, refetch } =
     useGetMarketAnalysisQuery(preferred, { pollingInterval: 5 * 60 * 1000 })
 
-  const [tab, setTab] = React.useState<Tab>('market')
-  const prevTab       = React.useRef<Tab>('market')
+  const prevPath  = React.useRef(location.pathname)
+  const direction = location.pathname === AppRoute.Portfolio && prevPath.current !== AppRoute.Portfolio ? 1 : -1
+  React.useEffect(() => { prevPath.current = location.pathname }, [location.pathname])
 
-  const direction = tab === 'portfolio' && prevTab.current === 'market' ? 1 : -1
-
-  function handleTabChange(next: Tab) {
-    prevTab.current = tab
-    setTab(next)
-  }
+  const isPortfolio = location.pathname === AppRoute.Portfolio
 
   const updatedAt = fulfilledTimeStamp
     ? new Date(fulfilledTimeStamp).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' })
@@ -45,9 +42,6 @@ export function App() {
   const errorMessage = isError
     ? (error as { error?: string })?.error ?? 'Ошибка загрузки данных'
     : null
-
-  // suppress unused dispatch warning — kept for potential future use
-  void dispatch
 
   return (
     <div className={classes.root}>
@@ -68,15 +62,18 @@ export function App() {
           <button className={classes.refreshBtn} onClick={refetch} title="Обновить">↺</button>
 
           <div className={classes.desktopTabs}>
-            {(['market', 'portfolio'] as Tab[]).map(t => (
-              <button
-                key={t}
-                className={`${classes.desktopTab} ${tab === t ? classes.active : ''}`}
-                onClick={() => handleTabChange(t)}
-              >
-                {t === 'market' ? 'Рынок' : 'Портфель'}
-              </button>
-            ))}
+            <button
+              className={`${classes.desktopTab} ${!isPortfolio ? classes.active : ''}`}
+              onClick={() => navigate(AppRoute.Market)}
+            >
+              Рынок
+            </button>
+            <button
+              className={`${classes.desktopTab} ${isPortfolio ? classes.active : ''}`}
+              onClick={() => navigate(AppRoute.Portfolio)}
+            >
+              Портфель
+            </button>
           </div>
         </div>
       </header>
@@ -87,7 +84,7 @@ export function App() {
 
       <AnimatePresence mode="wait" custom={direction}>
         <motion.div
-          key={tab}
+          key={location.pathname}
           custom={direction}
           variants={PAGE_VARIANTS}
           initial="initial"
@@ -95,12 +92,14 @@ export function App() {
           exit="exit"
           transition={{ type: 'spring', stiffness: 340, damping: 36, mass: 0.9 }}
         >
-          {tab === 'market'    && <MarketPage    coins={data} loading={isLoading} />}
-          {tab === 'portfolio' && <PortfolioPage marketData={data} />}
+          <Routes location={location}>
+            <Route path={AppRoute.Market}    element={<MarketPage    coins={data} loading={isLoading} />} />
+            <Route path={AppRoute.Portfolio} element={<PortfolioPage marketData={data} />} />
+          </Routes>
         </motion.div>
       </AnimatePresence>
 
-      <BottomNav tab={tab} onChange={handleTabChange} />
+      <BottomNav />
     </div>
   )
 }
