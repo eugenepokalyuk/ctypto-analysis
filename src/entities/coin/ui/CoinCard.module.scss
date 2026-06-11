@@ -2,7 +2,6 @@
 @use '@/shared/styles/mixins' as *;
 
 .card {
-  position: relative;
   border: 1px solid $border;
   border-radius: $radius-xl;
   background: $card;
@@ -33,7 +32,17 @@
   gap: 6px;
 }
 
-.titleGroup { min-width: 0; }
+.titleGroup {
+  min-width: 0;
+  flex: 1;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
 
 .symbol {
   font-size: 13px;
@@ -97,10 +106,3 @@
   margin-top: 3px;
 }
 
-// Кнопка звезды — позиционирована поверх карточки
-.favBtn {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  z-index: 1;
-}

@@ -47,7 +47,10 @@ export function CoinCard({ coin, selected = false, index = 0, onClick }: Props) 
             <p className={classes.symbol}>{coin.symbol}</p>
             <p className={classes.name}>{coin.name}</p>
           </div>
-          <SignalBadge signal={coin.signal} />
+          <div className={classes.headerRight}>
+            <SignalBadge signal={coin.signal} />
+            <FavoriteButton coinId={coin.id} />
+          </div>
         </div>
 
         <p className={classes.price}>${fmtPrice(coin.price)}</p>
@@ -71,10 +74,6 @@ export function CoinCard({ coin, selected = false, index = 0, onClick }: Props) 
         </div>
         <p className={classes.rsiLabel}>RSI {coin.indicators.rsi.toFixed(0)}</p>
       </button>
-
-      <div className={classes.favBtn}>
-        <FavoriteButton coinId={coin.id} />
-      </div>
     </motion.div>
   )
 }
