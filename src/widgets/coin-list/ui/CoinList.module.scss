@@ -1,7 +1,7 @@
 @use '@/shared/styles/variables' as *;
 @use '@/shared/styles/mixins' as *;
 
-.list { display: flex; flex-direction: column; padding: 8px 12px 0; gap: 4px; }
+.list { display: flex; flex-direction: column; padding: 8px 16px 0; gap: 4px; }
 
 .row {
   display: flex;

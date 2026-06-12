@@ -17,9 +17,9 @@ export const PROVIDERS: Record<SourceId, DataProvider> = {
 
 // Порядок для автоматического failover
 export const FALLBACK_ORDER: SourceId[] = [
-  'static',
-  'coingecko',
   'binance',
-  'cryptocompare',
   'coincap',
+  'cryptocompare',
+  'coingecko',
+  'static',
 ]

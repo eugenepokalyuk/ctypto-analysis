@@ -47,10 +47,7 @@ export function CoinCard({ coin, selected = false, index = 0, onClick }: Props) 
             <p className={classes.symbol}>{coin.symbol}</p>
             <p className={classes.name}>{coin.name}</p>
           </div>
-          <div className={classes.headerRight}>
-            <SignalBadge signal={coin.signal} />
-            <FavoriteButton coinId={coin.id} />
-          </div>
+          <FavoriteButton coinId={coin.id} />
         </div>
 
         <p className={classes.price}>${fmtPrice(coin.price)}</p>
@@ -62,6 +59,7 @@ export function CoinCard({ coin, selected = false, index = 0, onClick }: Props) 
           <span className={`${classes.macd} ${bullMacd ? classes.bull : classes.bear}`}>
             {bullMacd ? '▲' : '▼'} MACD
           </span>
+          <SignalBadge signal={coin.signal} />
         </div>
 
         <div className={classes.rsiBar}>

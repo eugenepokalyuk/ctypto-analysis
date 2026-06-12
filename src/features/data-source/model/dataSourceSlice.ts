@@ -13,7 +13,7 @@ interface DataSourceState {
 const dataSourceSlice = createSlice({
   name: 'dataSource',
   initialState: (): DataSourceState => ({
-    preferred: (localStorage.getItem(STORAGE_KEY) as SourceId | null) ?? 'static',
+    preferred: (localStorage.getItem(STORAGE_KEY) as SourceId | null) ?? 'binance',
     active:    null,
   }),
   reducers: {

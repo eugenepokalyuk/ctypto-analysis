@@ -5,7 +5,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  padding: 8px 12px 8px;
+  padding: 8px 16px;
 
   @include tablet {
     grid-template-columns: repeat(3, 1fr);
@@ -23,7 +23,7 @@
   color: $text-muted;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  padding: 10px 12px 6px;
+  padding: 10px 16px 6px;
 
   @include desktop {
     padding: 10px 0 6px;

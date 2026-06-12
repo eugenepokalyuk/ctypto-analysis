@@ -37,13 +37,6 @@
   flex: 1;
 }
 
-.headerRight {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
 .symbol {
   font-size: 13px;
   font-weight: 700;
@@ -66,8 +59,11 @@
 }
 
 .meta {
-  @include flex-between;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 5px;
+  flex-wrap: wrap;
 }
 
 .change {
@@ -80,6 +76,7 @@
 .macd {
   font-size: 10px;
   font-weight: 700;
+  flex: 1;
   &.bull { color: $buy; }
   &.bear { color: $sell; }
 }
