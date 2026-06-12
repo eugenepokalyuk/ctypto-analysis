@@ -19,7 +19,7 @@
   display: block;
   width: 100%;
   text-align: left;
-  padding: 14px 14px 12px;
+  padding: 16px 16px 14px;
   background: none;
   border: none;
   cursor: pointer;
@@ -28,8 +28,8 @@
 .header {
   @include flex-between;
   align-items: flex-start;
-  margin-bottom: 8px;
-  gap: 6px;
+  margin-bottom: 10px;
+  gap: 8px;
 }
 
 .titleGroup {
@@ -38,21 +38,21 @@
 }
 
 .symbol {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: $text-primary;
   line-height: 1.2;
 }
 
 .name {
-  font-size: 10px;
+  font-size: 11px;
   color: $text-muted;
-  margin-top: 1px;
+  margin-top: 2px;
   @include text-truncate;
 }
 
 .price {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 600;
   color: $text-primary;
   font-family: $font-mono;
@@ -62,19 +62,19 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-top: 5px;
+  margin-top: 8px;
   flex-wrap: wrap;
 }
 
 .change {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   &.up   { color: $buy; }
   &.down { color: $sell; }
 }
 
 .macd {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   flex: 1;
   &.bull { color: $buy; }
@@ -82,8 +82,8 @@
 }
 
 .rsiBar {
-  margin-top: 9px;
-  height: 2px;
+  margin-top: 12px;
+  height: 3px;
   border-radius: 100px;
   background: $border;
   overflow: hidden;
@@ -98,8 +98,8 @@
 }
 
 .rsiLabel {
-  font-size: 9px;
+  font-size: 10px;
   color: $text-muted;
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
